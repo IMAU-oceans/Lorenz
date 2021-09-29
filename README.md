@@ -1,6 +1,6 @@
-# Lorenz Compute Cluster
+# Compute Cluster Lorenz
 
-This page contains basic information about our local computercluster Lorenz.
+This page contains basic information about our local compute cluster Lorenz.
 
 Lorenz has the following setup:
 * 1 main-node with 24 cores
