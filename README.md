@@ -59,7 +59,8 @@ started on the compute nodes.
 
 Here's the procedure of starting a job on the compute nodes:
 
-Suppose you want to run an MPI program ./HIM in the directory /nethome/my/run/directory/
+Suppose you want to run an ocean model called HIM on 32 cores (1 compute node) and suppose \
+that you compiled the HIM source code into an MPI executable  ./HIM in the directory /nethome/my/run/directory/
 
 In this directory then make a file:  submit.sh (or whatever you want to call it) with contents:
 
@@ -67,7 +68,7 @@ In this directory then make a file:  submit.sh (or whatever you want to call it)
     #
     #SBATCH -J HIM              # the name of your job   
     #SBATCH -t 10:00:00         # time in hh:mm:ss you want to reserve for the job
-    #SBATCH -n 8                # the number of cores you want to use for the job, SLURM automatically determines how many nodes are needed
+    #SBATCH -n 32               # the number of cores you want to use for the job, SLURM automatically determines how many nodes are needed
     #SBATCH -o log_him.%j.o     # the name of the file where the standard output will be written to. %j will be the jobid determined by SLURM
     #SBATCH -e log_him.%j.e     # the name of the file where potential errors will be written to. %j will be the jobid determined by SLURM
  
