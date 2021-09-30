@@ -16,7 +16,9 @@ The batch system is SLURM.
 
 ## Get access
 
-Request a Lorenz account by writing an email to m.kliphuis@uu.nl
+Request a Lorenz account by writing an email to m.kliphuis@uu.nl      
+         \
+Please mention your solisid (if you have one)
 
 ## Login
 
