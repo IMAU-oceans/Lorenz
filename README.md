@@ -79,6 +79,8 @@ In this directory then make a file:  submit.sh (or whatever you want to call it)
     srun ./HIM < input          # the HIM executable needs an ascii file 'input' as argument
 
 
+For an example that shows how to run a **python** job on the compute nodes click [here](python_example.md)
+
 After that type on the commandline:
 
     sbatch submit.sh
