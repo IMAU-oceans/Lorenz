@@ -34,7 +34,9 @@ After that fill in your (Solis ID) password
 The -X option allows a user to start graphical applications.
 Sometimes -X does not work, then try -Y
   
-When working from home first establish a VPN connection to the UU
+When working from home first establish a VPN connection to the UU or
+\
+first login to gemini.science.uu.nl and log in to Lorenz from there.
   
 ## Usage
 
