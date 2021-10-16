@@ -69,10 +69,10 @@ started on the compute nodes.
 With this we mean running a job on one or more cores of the compute nodes.  
 The six compute nodes with each 32 cores are divided in the following so called partitions:
 
-| partition      | max walltime (d-hh:mm:ss) | #nodes      | Max #nodes/job  | Description                                   |
-| :------------: | :-----------------------: | :---------: | :-------------: | :-------------------------------------------- |
-| normal         | 5-00:00:00                |     4       |        2        | for production runs (is the default)          |
-| short          | 01:00:00                  |     2       |        1        | for short runs and testing/debugging       |
+| partition      | max walltime (d-hh:mm:ss) | #nodes      | Max #nodes/job  | Description                                         |
+| :------------: | :-----------------------: | :---------: | :-------------: | :-------------------------------------------------- |
+| normal         | 5-00:00:00                |     4       |        2        | for production runs (is the default)                |
+| short          | 01:00:00                  |     2       |        1        | for short runs and testing/debugging                |
 
 When a user does not indicate the partition in the job script then by default cores of the 'normal' partition nodes are used. 
 
