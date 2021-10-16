@@ -13,7 +13,6 @@ The cluster has Intel cores with a clockspeed of 2.9 GHz connected with \
 a very fast infiniband connection (10Gb/s).
 The batch system is SLURM.
 
-
 ## Get access
 
 Request a lorenz account by writing an email to m.kliphuis@uu.nl      
@@ -62,25 +61,29 @@ To check which modules are currently loaded type:
 
 
 After logging in, the user is on the main node. This node is meant only for editing, compilation, submission of batch jobs, running short programs and viewing results. This is called *interactive usage*. Please do not run programs and scripts there that take long (> 30 min) or use a lot of memory. 
-Also do not run many programs at the same time. These processes slow down the node (for all users) and should be done on the compute nodes. This is done by submitting a job script to the so called batch system. On lorenz this is SLURM and what it does is schedule your job i.e. decide when your job will be 
+Also do not run many programs at the same time. These processes slow down the node (for all users) and should be done on the compute nodes. This is done by submitting a job script to the so called batch system. On lorenz this is SLURM and what it does (among other things) is schedule your job i.e. decide when your job will be 
 started on the compute nodes.
 
 ## Batch usage
 
-With this we mean running a job on the compute nodes on usually more than 1 cores (parallel).  
+With this we mean running a job on one or more cores of the compute nodes.  
 The six compute nodes with each 32 cores are divided in the following so called partitions:
 
-| partition      | max walltime (d-hh:mm:ss) | #nodes     | Max #nodes/job | Description                    |
-| :------------: | :-----------------------: | :---------: | :-------------: | :----------------------------- |
-| normal         | 5-00:00:00                |     4       |        2        | for production runs (default)  |
-| short          | 01:00:00                  |     2       |        1        | for short runs                 |
+| partition      | max walltime (d-hh:mm:ss) | #nodes      | Max #nodes/job  | Description                                   |
+| :------------: | :-----------------------: | :---------: | :-------------: | :-------------------------------------------- |
+| normal         | 5-00:00:00                |     4       |        2        | for production runs (is the default)          |
+| short          | 01:00:00                  |     2       |        1        | for short runs and testing or debugging       |
 
-When a user does not indicate the partition in the job script then by default the 'normal' partition nodes are used.
-Jobs submitted to the 'short' partition have a higher priority. This means that when it is busy
-on the system then your 'short' job will start sooner than your 'normal' one. Another rule is that the maximum number of 
-jobs that each user can submit is 2. 
+When a user does not indicate the partition in the job script then by default cores of the 'normal' partition nodes are used. 
 
-With the following command you can check which nodes are idle/free 
+It is advised to put jobs that take less than 1 hour in the 'short' partition for which we reserved two nodes (64 cores).
+\
+Jobs that take longer than 1 hour should be put in the 'normal' partition for which we reserved the remaining four nodes (128 cores).
+
+A user can reserve at most 1 node for a 'short' job and at most 2 nodes for a 'normal’ job and 
+the maximum number of jobs that each user can have in the queues is 2 (so the total for both partitions). 
+
+With the following command you can check which nodes are idle/free:
 
     sinfo | grep idle 
 
