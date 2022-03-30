@@ -110,6 +110,8 @@ In this directory then make a file:  submit.sh (or whatever you want to call it)
 
 For an example that shows how to run a **python** job on the compute nodes click [here](python_example.md)
 
+For a **matlab** job example click [here](matlab_example.md)
+
 After that type on the commandline:
 
     sbatch submit.sh
