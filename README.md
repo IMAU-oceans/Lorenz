@@ -5,7 +5,7 @@ This page contains basic information about our local compute cluster lorenz.
 lorenz has the following setup:
 * 1 main-node with 24 cores
   * with a total storage capacity of 220 TB
-* 6 compute-nodes with in total 192 cores (32 cores/node)
+* 9 compute-nodes with in total 288 cores (32 cores/node)
   * 192 GB memory for each node 
   * 2TB local storage for each node
   
