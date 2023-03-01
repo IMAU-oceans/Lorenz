@@ -71,8 +71,8 @@ The six compute nodes with each 32 cores are divided in the following so called 
 
 | partition      | max walltime (d-hh:mm:ss) | #nodes      | Max #nodes/job  | Description                                         |
 | :------------: | :-----------------------: | :---------: | :-------------: | :-------------------------------------------------- |
-| normal         | 5-00:00:00                |     4       |        2        | for production runs (is the default)                |
-| short          | 01:00:00                  |     2       |        1        | for short runs and testing/debugging                |
+| normal         | 5-00:00:00                |     8       |        2        | for production runs (is the default)                |
+| short          | 01:00:00                  |     1       |        1        | for short runs and testing/debugging                |
 
 When a user does not indicate the partition in the job script then by default cores of the 'normal' partition nodes are used. 
 
