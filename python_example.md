@@ -40,3 +40,21 @@ to check more information about the job, for instance where it was submitted fro
 followed by:
 
     show job 123456   
+    
+Currently there are 3 versions of python installed on Lorenz. Typing: 
+
+    python3
+    
+will start python 3.9.5
+
+    python3.8
+    
+will start python 3.8.13
+
+    python3.6
+    
+will start python 3.6.8
+
+
+    
+
