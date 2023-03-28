@@ -45,7 +45,7 @@ For more information about access to lorenz using Jupyter lab from home click [h
 
 When working on the Utrecht University network, copy data to Lorenz with the command:
 
-scp -r data_you_want_to_copy yoursolisid@lorenz.science.uu.nl:/path/where/you/want/it/on/lorenz/
+scp -r data_to_copy yoursolisid@lorenz.science.uu.nl:/target/path/on/lorenz/
 
     e.g.  scp -r test.nc vries001@lorenz.science.uu.nl:/nethome/vries001/
     
@@ -57,9 +57,9 @@ scp -r yoursolisid@lorenz.science.uu.nl:/path/to/file/on/lorenz .
     
 After the scp command you will be asked to fill in your (Solis ID) password
 
-When NOT working on the Utrecht University network (e.g. home) then use the intermediary server Gemini and the 'ProxyJump' option to quickly transfer data. You can then copy data to Lorenz with the command:
+When NOT working on the Utrecht University network (e.g. at home) then use the intermediary server Gemini and the 'ProxyJump' option to quickly transfer data. You can then copy data to Lorenz with the command:
 
-scp  -o ProxyJump=yoursolisid@gemini.science.uu.nl data_you_want_to_copy yoursolisid@lorenz.science.uu.nl:/path/where/you/want/it/on/lorenz/
+scp  -o ProxyJump=yoursolisid@gemini.science.uu.nl data_to_copy yoursolisid@lorenz.science.uu.nl:/target/path/on/lorenz/
 
     e.g. scp  -o ProxyJump=vries001@gemini.science.uu.nl test.nc vries001@lorenz.science.uu.nl:/nethome/vries001/
 
