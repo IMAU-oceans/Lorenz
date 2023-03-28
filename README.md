@@ -41,6 +41,36 @@ and log in to lorenz from there.
   
 For more information about access to lorenz using Jupyter lab from home click [here](https://github.com/OceanParcels/UtrechtTeam/wiki/How-to-run-parcels-on-lorenz,-gemini-and-cartesius#remote-access-to-lorenz-using-jupyter-lab-from-home)
 
+## Transfer data to/from Lorenz
+
+When working on the Utrecht University network, copy data to Lorenz with the command:
+
+scp -r data_you_want_to_copy yoursolisid@lorenz.science.uu.nl:/path/where/you/want/it/on/lorenz/
+
+    e.g.  scp -r test.nc vries001@lorenz.science.uu.nl:/nethome/vries001/
+    
+When you want it the other way around i.e. copy data from Lorenz to your local machine on the Utrecht University network then type:
+
+scp -r yoursolisid@lorenz.science.uu.nl:/path/to/file/on/lorenz .
+
+    e.g. scp -r vries001@lorenz.science.uu.nl:/nethome/vries001/test.nc .
+    
+After the scp command you will be asked to fill in your (Solis ID) password
+
+When NOT working on the Utrecht University network (e.g. home) then use the intermediary server Gemini and the 'ProxyJump' option to quickly transfer data. You can then copy data to Lorenz with the command:
+
+scp  -o ProxyJump=yoursolisid@gemini.science.uu.nl data_you_want_to_copy yoursolisid@lorenz.science.uu.nl:/path/where/you/want/it/on/lorenz/
+
+    e.g. scp  -o ProxyJump=vries001@gemini.science.uu.nl test.nc vries001@lorenz.science.uu.nl:/nethome/vries001/
+
+When you want it the other way around i.e. copy data from Lorenz to your local machine (e.g. at home) then type:
+
+scp  -o ProxyJump=yoursolisid@gemini.science.uu.nl yoursolisid@lorenz.science.uu.nl:/path/to/file/on/lorenz .
+
+    e.g. scp  -o ProxyJump=vries001@gemini.science.uu.nl vries001@lorenz.science.uu.nl:/nethome/vries001/test.nc .
+    
+After the scp command you will be asked to fill in your (Solis ID) password twice, one time for Gemini and one for Lorenz.
+
 ## Usage
 
 The system works with modules. To check which modules are available type:
@@ -76,9 +106,9 @@ The six compute nodes with each 32 cores are divided in the following so called 
 
 When a user does not indicate the partition in the job script then by default cores of the 'normal' partition nodes are used. 
 
-It is advised to put jobs that take less than 1 hour in the 'short' partition for which we reserved two nodes (64 cores).
+It is advised to put jobs that take less than 1 hour in the 'short' partition for which we reserved one node (32 cores).
 \
-Jobs that take longer than 1 hour should be put in the 'normal' partition for which we reserved the remaining four nodes (128 cores).
+Jobs that take longer than 1 hour should be put in the 'normal' partition for which we reserved the remaining eight nodes (256 cores).
 
 A user can reserve at most 1 node for a 'short' job and at most 2 nodes for a 'normal’ job and 
 the maximum number of jobs that each user can have in the queues is 2 (so the total for both partitions). 
@@ -87,7 +117,7 @@ With the following command you can check which nodes are idle/free:
 
     sinfo | grep idle 
 
-Here's the procedure of starting a job on the compute nodes:
+Here's the procedure for starting a job on the compute nodes:
 
 Suppose you want to run an ocean model called HIM on 32 cores (1 compute node) and you think the job will take
 at most 1 hour to complete. Say that you compiled the HIM source code into an MPI executable  ./HIM in the directory /nethome/my/run/directory/
