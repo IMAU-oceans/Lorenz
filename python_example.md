@@ -17,6 +17,9 @@ In this directory then make a file:  submit.sh (or whatever you want to call it)
     #SBATCH -o log_pytest.%j.o  # the name of the file where the standard output will be written to. %j will be the jobid determined by SLURM
     #SBATCH -e log_pytest.%j.e  # the name of the file where potential errors will be written to. %j will be the jobid determined by SLURM
  
+    module load miniconda
+    eval "$(conda shell.bash hook)"  # this makes sure that conda works in the batch environment 
+    
     cd /nethome/my/run/directory/
     conda activate envname      # this passes your conda environment to all the compute nodes
     srun python3 test.py
