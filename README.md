@@ -102,13 +102,13 @@ The six compute nodes with each 32 cores are divided in the following so called 
 | partition      | max walltime (d-hh:mm:ss) | #nodes      | Max #nodes/job  | Description                                         |
 | :------------: | :-----------------------: | :---------: | :-------------: | :-------------------------------------------------- |
 | normal         | 5-00:00:00                |     8       |        2        | for production runs (is the default)                |
-| short          | 01:00:00                  |     1       |        1        | for short runs and testing/debugging                |
+| short          | 03:00:00                  |     1       |        1        | for short runs and testing/debugging                |
 
 When a user does not indicate the partition in the job script then by default cores of the 'normal' partition nodes are used. 
 
-It is advised to put jobs that take less than 1 hour in the 'short' partition for which we reserved one node (32 cores).
+It is advised to put jobs that take less than 3 hours in the 'short' partition for which we reserved one node (32 cores).
 \
-Jobs that take longer than 1 hour should be put in the 'normal' partition for which we reserved the remaining eight nodes (256 cores).
+Jobs that take longer than 3 hours should be put in the 'normal' partition for which we reserved the remaining eight nodes (256 cores).
 
 A user can reserve at most 1 node for a 'short' job and at most 2 nodes for a 'normal’ job and 
 the maximum number of jobs that each user can have in the queues is 2 (so the total for both partitions). 
@@ -120,15 +120,15 @@ With the following command you can check which nodes are idle/free:
 Here's the procedure for starting a job on the compute nodes:
 
 Suppose you want to run an ocean model called HIM on 32 cores (1 compute node) and you think the job will take
-at most 1 hour to complete. Say that you compiled the HIM source code into an MPI executable  ./HIM in the directory /nethome/my/run/directory/
+at most 3 hours to complete. Say that you compiled the HIM source code into an MPI executable  ./HIM in the directory /nethome/my/run/directory/
 
 In this directory then make a file:  submit.sh (or whatever you want to call it) with contents:
 
     #!/bin/bash -l
     #
     #SBATCH -J HIM              # the name of your job   
-    #SBATCH -p short            # request the short partition, job takes less than 1 hour  
-    #SBATCH -t 1:00:00          # time in hh:mm:ss you want to reserve for the job
+    #SBATCH -p short            # request the short partition, job takes less than 3 hours  
+    #SBATCH -t 3:00:00          # time in hh:mm:ss you want to reserve for the job
     #SBATCH -n 32               # the number of cores you want to use for the job, SLURM automatically determines how many nodes are needed
     #SBATCH -o log_him.%j.o     # the name of the file where the standard output will be written to. %j will be the jobid determined by SLURM
     #SBATCH -e log_him.%j.e     # the name of the file where potential errors will be written to. %j will be the jobid determined by SLURM
@@ -137,6 +137,14 @@ In this directory then make a file:  submit.sh (or whatever you want to call it)
     
     srun ./HIM < input          # the HIM executable needs an ascii file 'input' as argument
 
+Probably the easiest editor to use on Lorenz is **nano**. Also **vi** can be used but it has a steeper learning curve.
+Simply create (or edit) the file by typing:
+
+    nano submit.sh 
+
+or 
+
+    vi submit.sh 
 
 For an example that shows how to run a **python** job on the compute nodes click [here](python_example.md)
 
