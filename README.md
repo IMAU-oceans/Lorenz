@@ -39,7 +39,7 @@ ssh -X yoursolisid@gemini.science.uu.nl
 
 and log in to lorenz from there.
   
-For more information about access to lorenz using Jupyter lab from home click [here](https://github.com/OceanParcels/UtrechtTeam/wiki/How-to-run-parcels-on-lorenz,-gemini-and-cartesius#remote-access-to-lorenz-using-jupyter-lab-from-home)
+For more information about access to lorenz using Jupyter lab from home click [here](https://github.com/OceanParcels/UtrechtTeam/wiki/How-to-run-parcels-on-lorenz-or-gemini#jupyter-lab-on-a-compute-node)
 
 ## Transfer data to/from Lorenz
 
