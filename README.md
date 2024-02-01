@@ -4,7 +4,7 @@ This page contains basic information about our local compute cluster lorenz.
 
 lorenz has the following setup:
 * 1 main-node with 24 cores
-  * with a total storage capacity of 220 TB
+  * with a total storage capacity of 394 TB
 * 9 compute-nodes with in total 288 cores (32 cores/node)
   * 192 GB memory for each node 
   * 2TB local storage for each node
@@ -90,28 +90,28 @@ To check which modules are currently loaded type:
     module list
 
 
-After logging in, the user is on the main node. This node is meant only for editing, compilation, submission of batch jobs, running short programs and viewing results. This is called *interactive usage*. Please do not run programs and scripts there that take long (> 30 min) or use a lot of memory. 
+After logging in, the user is on the main node. This node is meant only for editing, compilation, submission of batch jobs, running short programs and viewing results. This is called *interactive usage*. Please do not run programs and scripts there that take long (> 10 min) or use a lot of memory. 
 Also do not run many programs at the same time. These processes slow down the node (for all users) and should be done on the compute nodes. This is done by submitting a job script to the so called batch system. On lorenz this is SLURM and what it does (among other things) is schedule your job i.e. decide when your job will be 
 started on the compute nodes.
 
 ## Batch usage
 
 With this we mean running a job on one or more cores of the compute nodes.  
-The six compute nodes with each 32 cores are divided in the following so called partitions:
+The compute nodes with each 32 cores are divided in the following so called partitions:
 
-| partition      | max walltime (d-hh:mm:ss) | #nodes      | Max #nodes/job  | Description                                         |
-| :------------: | :-----------------------: | :---------: | :-------------: | :-------------------------------------------------- |
-| normal         | 5-00:00:00                |     8       |        2        | for production runs (is the default)                |
-| short          | 03:00:00                  |     1       |        1        | for short runs and testing/debugging                |
+| partition      | max walltime (d-hh:mm:ss) | #nodes      | Max #nodes/job  | Max #jobs/user | Description                          | 
+| :------------: | :-----------------------: | :---------: | :-------------: | :------------- | :------------------------------------|
+| normal         | 5-00:00:00                |     8       |        2        |        3       | for production runs (is the default) |   
+| short          | 03:00:00                  |     1       |        1        |        2       | for short runs and testing/debugging |
 
-When a user does not indicate the partition in the job script then by default cores of the 'normal' partition nodes are used. 
+When a user does not indicate the partition in the job script then by default, cores of the 'normal' partition nodes are used. 
 
 It is advised to put jobs that take less than 3 hours in the 'short' partition for which we reserved one node (32 cores).
 \
 Jobs that take longer than 3 hours should be put in the 'normal' partition for which we reserved the remaining eight nodes (256 cores).
 
-A user can reserve at most 1 node for a 'short' job and at most 2 nodes for a 'normal’ job and 
-the maximum number of jobs that each user can have in the queues is 2 (so the total for both partitions). 
+A user can reserve at most 2 nodes for a job in the 'normal' partition and at most 1 node for a job in the 'short’ partition. 
+Each user can start at most 3 jobs in parallel in the 'normal' partition and at most 2 jobs in parallel in the 'short' partition.
 
 With the following command you can check which nodes are idle/free:
 
