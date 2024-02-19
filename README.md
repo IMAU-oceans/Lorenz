@@ -71,6 +71,8 @@ scp  -o ProxyJump=yoursolisid@gemini.science.uu.nl yoursolisid@lorenz.science.uu
     
 After the scp command you will be asked to fill in your (Solis ID) password twice, one time for Gemini and one for Lorenz.
 
+Data readily available on Lorenz that is frequently used as input for Parcels and might come in handy for other purposes as well is described at: https://github.com/OceanParcels/UtrechtTeam/wiki
+
 ## Usage
 
 The system works with modules. To check which modules are available type:
